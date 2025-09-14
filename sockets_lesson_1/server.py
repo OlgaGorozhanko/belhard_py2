@@ -22,7 +22,8 @@ try:
         data_return = compose_welcome_message(data_name_client)
         conn.send(data_return.encode())
 finally:
-    print("--end server--")
-    conn.close()
+    if conn:
+        print("--end server--")
+        conn.close()
 
 
