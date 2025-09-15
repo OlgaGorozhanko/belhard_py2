@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Регистрация</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/1280px-Python.svg.png" type="image/png"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .register-container {
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            width: 320px;
+        }
+        .register-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+        .register-container label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #555;
+        }
+        .register-container input[type="text"],
+        .register-container input[type="password"],
+        .register-container select {
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 15px;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .register-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1976d2;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .register-container button:hover {
+            background-color: #1565c0;
+        }
+        .error-message {
+            color: #d32f2f;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Регистрация</h2>
+        <form id="registrationForm" action="/register" method="POST">
+            <label for="username">Имя пользователя</label>
+            <input type="text" id="username" name="username" required autocomplete="username" />
+ <!--
+            <label for="python-skill">Навык владения Python (0-3)</label>
+          <select id="python-skill" name="python_skill">
+                <option value="" disabled selected>Выберите уровень</option>
+                <option value="0">0 - Не знаю</option>
+                <option value="1">1 - Знаю основы</option>
+                <option value="2">2 - Среднее владение</option>
+                <option value="3">3 - Глубокие знания</option>
+            </select>
+-->
+            <label for="password">Пароль</label>
+            <input type="password" id="password" name="password" required autocomplete="new-password" />
+
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    </div>
+</body>
+</html>
+
