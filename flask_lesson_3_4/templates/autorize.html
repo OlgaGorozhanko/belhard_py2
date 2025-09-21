@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Страница авторизации</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/1280px-Python.svg.png" type="image/png"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            width: 300px;
+            margin: 30px;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+        .login-container label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #555;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 8px 10px;
+            margin-bottom: 15px;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #1976d2;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #1565c0;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Авторизация</h2>
+        {% if err %}
+        <p style="color: red; font-weight: bold; margin-bottom: 5px;">Логин/пароль неверный</p>
+        {% endif %}
+        <form id="authForm" action="" method="POST">
+            <label for="login">Логин </label>
+            <input type="text" id="login" name="login" placeholder="Логин" required/>
+            <label for="password">Пароль</label>
+            <input type="password" id="password" name="password" placeholder="Пароль" required/>
+            <button type="submit" id="sendBtn">Войти</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,11 +51,44 @@
             background: white;color: black;
             box-shadow: 0px 0px 0px;
         }
+        /* Шапка с кнопками */
+        header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 40px;
+            background: transparent;
+            position: relative;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+          }
+        .btn:hover {
+            background-color: #FFA500; /* Цвет подсветки */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Тень для эффекта подсветки */
+        }
+        .hello{
+             color: #0C268E;
+             text-align: right;
+             margin-right: 10px;
+             padding: 10px 20px;
+        }
     </style>
 </head>
 <body>
-    <h1>Главная страница</h1>
-
+    {% if login %}
+        <label class="hello"><H1> Добро пожаловать на наш сайт, {{login}}</H1></label>
+        <header><button class="btn" onclick="location.href='/logout'">Выйти</button></header>
+    {% else %}
+        <header>
+            <button class="btn" onclick="location.href='autorize'">Войти</button>
+            <button class="btn" onclick="location.href='register'">Зарегистрироваться</button>
+        </header>
+    {% endif %}
     <section class="stage">
 <!--      <div id="home" class="div"><p id="homep" class="p">Главная</p></div>-->
         <div class="div" id="duck"><a href="/duck/">Уточки Кря-кря</a></div>

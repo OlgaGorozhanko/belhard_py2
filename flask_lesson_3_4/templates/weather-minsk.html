@@ -144,33 +144,51 @@
       font-weight: 600;
       font-size: 1.1rem;
     }
-
-    /* Мобильная адаптивность */
-    @media (max-width: 480px) {
-      .weather-container {
-        max-width: 100%;
-        padding: 25px 20px;
-      }
-
-      .current-temp {
-        font-size: 4rem;
-      }
-
-      .forecast-day {
-        width: 55px;
-        padding: 12px;
-        margin-right: 12px;
-      }
-    }
+     /* Шапка с кнопками */
+        header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 40px;
+            background: transparent;
+            position: relative;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+          }
+        .btn:hover {
+            background-color: #FFA500; /* Цвет подсветки */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Тень для эффекта подсветки */
+        }
+        .hello{
+             color: #0C268E;
+             text-align: right;
+             margin-right: 10px;
+             padding: 10px 20px;
+        }
   </style>
 </head>
 <body>
-
+  {% if login %}
+        <label class="hello"><H1> Добро пожаловать на наш сайт, {{login}}</H1></label>
+        <header><button class="btn" onclick="location.href='/logout'">Выйти</button></header>
+    {% else %}
+        <header>
+            <button class="btn" onclick="location.href='autorize'">Войти</button>
+            <button class="btn" onclick="location.href='register'">Зарегистрироваться</button>
+        </header>
+    {% endif %}
   <div class="weather-container">
-    <h1>Погода сегодня в городе {{city}}</h1>
+    <h1>Погода сегодня в городе Минск</h1>
 
     <div class="current-weather">
-<!--      <div class="weather-icon">☀️/ ☁️</div>-->
+
+<!--        <div class="weather-icon">☀️/ ☁️</div>-->
+
       <div class="current-temp">{{weather["temp"]}}°K</div>
       <div class="weather-description">{{weather["main"]}}</div>
     </div>

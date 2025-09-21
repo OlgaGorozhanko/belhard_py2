@@ -12,16 +12,13 @@
       margin: 0;
       padding: 0;
     }
-
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #6dd5fa 0%, #2980b9 100%);
       color: #fff;
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 40px 20px;
+      padding-top: 80px; /* отступ сверху под шапку */
+      margin: 0;
     }
 
     /* Контейнер основной */
@@ -144,35 +141,55 @@
       font-weight: 600;
       font-size: 1.1rem;
     }
-
-    /* Мобильная адаптивность */
-    @media (max-width: 480px) {
-      .weather-container {
-        max-width: 100%;
-        padding: 25px 20px;
-      }
-
-      .current-temp {
-        font-size: 4rem;
-      }
-
-      .forecast-day {
-        width: 55px;
-        padding: 12px;
-        margin-right: 12px;
-      }
-    }
+           /* шапка */
+        .top-header {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 999;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          padding: 10px 40px;
+          background: rgba(255,255,255,0.2);
+          backdrop-filter: blur(10px);
+        }
+        .btn {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+          }
+        .btn:hover {
+            background-color: #FFA500; /* Цвет подсветки */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Тень для эффекта подсветки */
+        }
+        .hello{
+             color: #0C268E;
+             text-align: right;
+             margin-right: 10px;
+             padding: 10px 20px;
+        }
   </style>
 </head>
 <body>
-
+  <header class="top-header">
+    {% if login %}
+      <label class="hello"><H1>Добро пожаловать на наш сайт, {{login}}</H1></label>
+      <button class="btn" onclick="location.href='/logout'">Выйти</button>
+    {% else %}
+      <button class="btn" onclick="location.href='autorize'">Войти</button>
+      <button class="btn" onclick="location.href='register'">Зарегистрироваться</button>
+    {% endif %}
+  </header>
   <div class="weather-container">
-    <h1>Погода сегодня в городе Минск</h1>
+    <h1>Погода сегодня в городе {{city}}</h1>
 
     <div class="current-weather">
-
-<!--        <div class="weather-icon">☀️/ ☁️</div>-->
-
+<!--      <div class="weather-icon">☀️/ ☁️</div>-->
       <div class="current-temp">{{weather["temp"]}}°K</div>
       <div class="weather-description">{{weather["main"]}}</div>
     </div>

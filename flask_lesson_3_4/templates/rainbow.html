@@ -56,7 +56,7 @@
     position: absolute;
     bottom: 20px;
     right: 20px;
-    width: 1000px;
+    width: 500px;
     height: auto;
     z-index: 10;
   }
@@ -79,10 +79,43 @@
 .rainbow-link:hover {
   filter: brightness(1.2);
 }
+  .hello{
+             color: #0C268E;
+             text-align: right;
+             margin-right: 10px;
+             padding: 10px 20px;
+        }
+    header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 40px;
+            background: transparent;
+            position: relative;
+        }
+    .btn {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+          }
+        .btn:hover {
+            background-color: #FFA500; /* Цвет подсветки */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Тень для эффекта подсветки */
+        }
 </style>
 </head>
 <body>
-
+ {% if login %}
+        <label class="hello"><H1> Добро пожаловать на наш сайт, {{login}}</H1></label>
+        <header><button class="btn" onclick="location.href='/logout'">Выйти</button></header>
+    {% else %}
+        <header>
+            <button class="btn" onclick="location.href='autorize'">Войти</button>
+            <button class="btn" onclick="location.href='register'">Зарегистрироваться</button>
+        </header>
+    {% endif %}
 <!-- Контейнер с диагональными полосами -->
 <div class="rainbow-container">
   <div class="stripe red"></div>
