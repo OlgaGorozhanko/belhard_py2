@@ -180,9 +180,11 @@ try:
             choice_response_method(data, conn)
             # print(data)
             #send_file(r"html\main2.html", conn)
+            print("-----end server-----")   # будет отрабатывать этот после каждого запроса
+            conn.close()
 finally:
     if conn:
-        print("-----end server-----")
+        print("-----end server-----") # отработает при отключении пользователя
         conn.close()
 
 
