@@ -17,25 +17,31 @@ app = Flask(__name__,
 app.config['SECRET_KEY'] = 'my secret key 12334 dslkfj dlskjf lsdkjf sdlkjflsdkjf'
 
 
-
+# def check_login(func):
+#     def wrapper():
+#         if session and session.get('user_id'):
+#             func()
+#     return wrapper
+#
+# @check_login
 @app.route("/")
 def index():
     login = None
-    if session and session['user_id']:
+    if session and session.get('user_id'):
         login = session['user_id']
     return render_template('index.html', login=login)
 
 
 @app.route("/duck/")
 def duck():
-    if session and session['user_id']:
+    if session and session.get('user_id'):
         _duck = get_pic_duck2()
         return render_template('duck.html', duck=_duck, login=session['user_id'])
     return redirect(url_for("autorize"))
 
 @app.route("/fox/")
 def fox_start():
-    if session and session['user_id']:
+    if session and session.get('user_id'):
         _fox = get_pic_fox(1)
         return render_template("fox.html", foxes=_fox, mess="можно только от 1 до 10", login=session['user_id'])
     return redirect(url_for("autorize"))
@@ -43,7 +49,7 @@ def fox_start():
 
 @app.route("/fox/<int:num>/")
 def fox(num):
-    if session and session['user_id']:
+    if session and session.get('user_id'):
         if 1 <= num <= 10:
             _fox = get_pic_fox(num)
             return render_template('fox.html', foxes=_fox, login=session['user_id'])
@@ -53,7 +59,7 @@ def fox(num):
 
 @app.route("/weather-minsk/")
 def weather_minsk():
-    if session and session['user_id']:
+    if session and session.get('user_id'):
         _weather_m = get_weather("Minsk")
         return render_template("weather-minsk.html", weather=_weather_m, login=session['user_id'])
     return redirect(url_for("autorize"))
@@ -61,7 +67,7 @@ def weather_minsk():
 
 @app.route("/weather/")
 def weather():
-    if session and session['user_id']:
+    if session and session.get('user_id'):
         _weather = get_weather("Minsk")
         return render_template("weather.html", city="Minsk", weather=_weather, login=session['user_id'])
     return redirect(url_for("autorize"))
@@ -69,7 +75,7 @@ def weather():
 
 @app.route("/weather/<city>/")
 def weather_city(city):
-    if session and session['user_id']:
+    if session and session.get('user_id'):
         _weather = get_weather(city)
         return render_template("weather.html", city=city, weather=_weather, login=session['user_id'])
     return redirect(url_for("autorize"))
@@ -77,14 +83,14 @@ def weather_city(city):
 
 @app.route("/rainbow/")
 def rainbow():
-    if session and session['user_id']:
+    if session and session.get('user_id'):
         return render_template("rainbow.html", login=session['user_id'])
     return redirect(url_for("autorize"))
 
 
 @app.route("/weth/")
 def weth():
-    if session and session['user_id']:
+    if session and session.get('user_id'):
         return render_template("weth.html")
     return redirect(url_for("autorize"))
 
@@ -127,6 +133,13 @@ def autorize():
 def logout():
     session.pop('user_id', None)
     return redirect(url_for('index'))
+
+
+@app.route('/tags/')
+def tags():
+    if session and session.get('user_id'):
+        return render_template("tags.html")
+    return redirect(url_for("autorize"))
 
 
 # Сработает если ошибка 404 - т.е. любой другой путь который выше не предусмотрен
