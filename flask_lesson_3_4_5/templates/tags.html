@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 5</title>
+    <style>
+        ._3 * {
+          border: 1px solid #000;
+        }
+        ._3 b, caption {
+          border: none !important;
+        }
+        ._3 td, th {
+          padding: 5px; /* отступы со всех сторон по 5px */
+        }
+
+        ._4 {
+          border-collapse: collapse;
+          border: 2px solid #B7410E;             /* обводка таблицы */
+        }
+        /* Верхняя строка (заголовок) */
+        ._4 thead tr {
+          background-color: #B7410E;
+          color: white;
+        }
+        /* Вертикальные границы убраны */
+        ._4 thead th, tbody td {
+          border-left: none;
+          border-right: none;
+          padding: 2px 2px;
+        }
+        /* Горизонтальные линии: добавить бордер снизу у всех ячеек заголовка и тела */
+        ._4 thead th {
+          border-bottom: 2px solid #B7410E;  /* толстая линия под заголовком */
+        }
+        ._4 tbody td {
+          border-bottom: 2px solid #B7410E;     /* линии между строками тела */
+        }
+        /* Поочередная заливка строк */
+        ._4 tbody tr:nth-child(odd) {
+          background-color: #fffaf0;
+        }
+        ._4 tbody tr:nth-child(even) {
+          background-color: #f2e9cb;
+        }
+
+        ._5 {
+            border-collapse: collapse;
+            border: 2px solid black; /* внешняя обводка таблицы */
+        }
+        ._5 thead tr {
+            background-color: #787878; /* серый фон */
+            color: white;              /* белый текст */
+        }
+        ._5 thead th,._5 tbody td {
+            padding: 5px 5px;
+            border: 2px solid black;
+        }
+
+          /* Поочередная вертикальная заливка столбцов */
+          /* Нечётные столбцы (1,3,5...) — голубой фон */
+        ._5 tbody td:nth-child(odd) {
+            background-color: #9ed3db;
+        }
+          /* Чётные столбцы (2,4,6...) — желтый фон */
+        ._5 tbody td:nth-child(even) {
+            background-color: #f5e884;
+        }
+
+        .progress-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 300px;
+        }
+        .progress-container {
+            flex-grow: 1;
+            height: 15px;
+            background:  linear-gradient(90deg, #e0e3df, #c8ccc8, #e0e3df);
+            border-radius: 4px;
+            border: 1px solid #ccc;
+         }
+        /* Градиентная заливка прогресс-бара */
+        .progress-bar {
+            height: 100%;
+            width: 50%;
+            background: linear-gradient(90deg, #a8e6a1, #0f9b0f, #a8e6a1);
+        }
+
+        ._10{
+            background-color:  #f2ead8;
+        }
+
+        ._12 form {
+          max-width: 600px;
+          padding: 5px;
+        }
+        ._12 fieldset {
+          border: 1px solid #ccc;
+          padding: 5px;
+        }
+        ._12 legend {
+          font-size: 1.3em;
+          padding: 0 8px;
+        }
+        ._12 .form-row {
+          display: flex;
+          align-items: center;
+          margin-bottom: 7px;
+        }
+        ._12 label {
+          width: 100px;
+        }
+        ._12 input {
+          margin: 4px;
+          padding: 4px;
+          border: 1px solid #ccc;
+          height: 13px;
+          width: 300px;
+        }
+        ._12 textarea {
+          margin: 4px;
+          padding: 4px;
+          border: 1px solid #ccc;
+          width: 300px;
+        }
+        ._12 select {
+         margin: 4px;
+         padding: 4px;
+         border: 1px solid #ccc;
+         width: 310px;
+        }
+        ._12 .checkbox{
+          margin: 4px;
+          border: 1px solid #ccc;
+          height: 13px;
+          width: 10px;
+        }
+        ._12 .checkbox-flex {
+          display: flex;
+          flex-wrap: wrap; /* разрешаем перенос */
+          gap: 5px;
+         text-align: left;
+        }
+       ._12 .checkbox-flex label {
+          width: calc(25% - 4px); /* 4 колонки по ширине с учётом gap */
+          display: flex;
+          align-items: center;
+          box-sizing: border-box;
+        }
+       ._12 .send_info{
+         margin: 10px;
+         height: 35px;
+       }
+  </style>
+</head>
+<body>
+    <header>
+        Задание 5
+    </header>
+    <main>
+        <section>
+            <h1>Joy of T<sub>E</sub>X</h1>
+        </section>
+        <hr>
+        <section>
+            <pre>
+            <h2>           Евгений Евтушенко</h2>
+                    -- 1955 --
+                Бывало, спит у ног собака,
+                костер занявшийся гудит,
+                и женщина из получрака
+                глазами зыбкими глядит.
+
+                Потом под пихтою приляжет
+                на куртку рыжую мою
+                и мне,
+                   задумчивая,
+                            скажет:
+                "А ну-ка, спой!.." -
+                                и я спою.
+            </pre>
+        </section>
+        <hr>
+        <section>
+            <table class="_3" width="300">
+                <caption>Добыча драгоценных камней</caption>
+                <tr>
+                   <td></td><td style="text-align: center;"><b>2010</b></td>
+                    <td style="text-align: center;"><b>2012</b></td>
+                    <td style="text-align: center;"><b>2014</b></td>
+                </tr>
+                <tr>
+                  <td>Сапфиры</td><td rowspan="2">1483</td>
+                    <td>4532</td><td>6743</td>
+                </tr>
+                <tr>
+                  <td>Рубины</td><td>3835</td><td>7482</td>
+                </tr>
+                <tr>
+                  <td>Алмазы</td><td>683</td>
+                    <td colspan="2" style="text-align: center;">238</td>
+                </tr>
+              </table>
+        </section>
+        <hr>
+        <section>
+            <table class="_4" width="300">
+                 <thead>
+                     <tr>
+                       <td></td><td style="text-align: center;"><b>2004</b></td>
+                        <td style="text-align: center;"><b>2005</b></td>
+                        <td style="text-align: center;"><b>2006</b></td>
+                     </tr>
+                 </thead>
+                <tbody>
+                    <tr>
+                      <td>Рубины</td><td>43</td><td>51</td><td>79</td>
+                    </tr>
+                    <tr>
+                      <td>Изумруды</td><td>28</td><td>34</td><td>48</td>
+                    </tr>
+                    <tr>
+                      <td>Сапфиры</td><td>29</td><td>57</td><td>36</td>
+                    </tr>
+                    <tr>
+                      <td>Аметисты</td><td>23</td><td>64</td><td>97</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        <hr>
+        <section>
+            <table class="_5">
+              <thead>
+                <tr>
+                  <th>Название</th>
+                  <th>Цвет</th>
+                  <th>Твердость по Моосу</th>
+                  <th>Формула</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Алмаз</td>
+                  <td>Белый</td>
+                  <td style="text-align: center">10</td>
+                  <td>C</td>
+                </tr>
+                <tr>
+                  <td>Рубин</td>
+                  <td>Красный</td>
+                  <td style="text-align: center">9</td>
+                    <td>Al<sub>2</sub>O<sub>3</sub></td>
+                </tr>
+                <tr>
+                  <td>Аметист</td>
+                  <td>Фиолетовый</td>
+                  <td style="text-align: center">7</td>
+                    <td>SiO<sub>2</sub></td>
+                </tr>
+              <tr>
+                  <td>Изумруд</td>
+                  <td>Зеленый</td>
+                  <td style="text-align: center">8</td>
+                  <td>Be<sub>3</sub>Al<sub>2</sub>(SiO<sub>3</sub>)<sub>6</sub></td>
+                </tr>
+                <tr>
+                  <td>Сапфир</td>
+                  <td>Голубой</td>
+                  <td style="text-align: center">9</td>
+                  <td>Al<sub>2</sub>O<sub>3</sub></td>
+                </tr>
+              </tbody>
+            </table>
+        </section>
+        <hr>
+        <section>
+            <h1>Карта сокровищ</h1>
+            <hr>
+            <img src="https://img.freepik.com/premium-vector/map-treasures-paper-parchment_8071-3421.jpg" alt="Карта сокровищ">
+            <div class="progress-wrapper">
+              <div class="label">Пройдено: </div>
+              <div class="progress-container">
+                <div class="progress-bar"></div>
+              </div>
+            </div>
+        </section>
+        <hr>
+        <section>
+            <table class="_7">
+                <thead> <h2>Химические элементы</h2>
+                <hr>
+                <tr>
+                  <th>Номер</th>
+                  <th>Название</th>
+                  <th>Символ</th>
+                  <th>Год</th>
+                  <th>Статья</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td style="color: blue; text-decoration: underline;">Водород</td>
+                  <td style="text-align: center; font-weight: bold">H</td>
+                  <td>1766</td>
+                  <td><img src="https://st2.depositphotos.com/3665639/6849/v/450/depositphotos_68497055-stock-illustration-pictograph-of-checklist-icon.jpg" alt="картинка :)" width="30" height="30" style="float: right"></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td style="color: blue; text-decoration: underline;">Гелий</td>
+                  <td style="text-align: center; font-weight: bold">He</td>
+                  <td>1895</td>
+                  <td><img src="https://st2.depositphotos.com/3665639/6849/v/450/depositphotos_68497055-stock-illustration-pictograph-of-checklist-icon.jpg" alt="картинка :)" width="30" height="30" style="float: right"></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td style="color: blue; text-decoration: underline;">Бор</td>
+                  <td style="text-align: center; font-weight: bold">B</td>
+                  <td>1808</td>
+                  <td><img src="https://st2.depositphotos.com/3665639/6849/v/450/depositphotos_68497055-stock-illustration-pictograph-of-checklist-icon.jpg" alt="картинка :)" width="30" height="30" style="float: right"></td>
+                </tr>
+              </tbody>
+            </table>
+        </section>
+        <hr>
+        <section>
+            <h1>Генераторы</h1>
+             <ul>
+                <li>Цвета
+                     <ul type="circle">
+                         <li>Color Mixers</li>
+                         <li>Color Tester</li>
+                         <li>Color Pallete</li>
+                     </ul>
+                </li>
+                <li>Фавиконы
+                    <ol>
+                        <li>Favicon.cc
+                            <ul type="square" style="color: blue; text-decoration: underline;"><li>Скачать</li><li>Демо</li></ul>
+                        </li>
+                        <li>WebLab Favicon</li>
+                    </ol>
+                </li>
+                <li>Фоны
+                     <ul type="circle">
+                         <li>BgMaker</li>
+                         <li>StripeGenerator</li>
+                     </ul>
+                </li>
+                <li>Изображения
+                     <ol>
+                         <li>Buttonator</li>
+                         <li>AjaxLoad</li>
+                     </ol>
+                </li>
+             </ul>
+        </section>
+        <hr>
+        <section>
+<pre><h1>Стихотворение</h1>
+Мириады маленьких дел
+Пьют по капле гаснущий день,
+А <i>дела большие</i> сушит жажда.
+Оставляя все на "потом",
+Прозеваем задним числом,
+Только день <b>не повторяется</b> дважды.
+
+И.Тальков
+</pre>
+        </section>
+        <hr>
+        <section class="_10">
+            <H1 style="color: rgb(120, 84, 3)">Заголовок первого уровня</H1>
+            <h2>Заголовок второго уровня</h2>
+            <h3 style="color: #d19710">Заголовок третьего уровня</h3>
+            Пример ссылки <a href="https://youtube.com" style="color: green; text-decoration: underline;">ведущей на другую страницу</a>
+        </section>
+        <hr>
+        <section class="_11">
+           <p>
+               <label for="input_week">Неделя: </label>
+               <input type="week" id="input_week">
+           </p>
+           <p>
+               <label for="input_datetime">Дата и время: </label>
+               <input type="datetime-local" id="input_datetime">
+           </p>
+           <p>
+               <label for="input_month">Месяц: </label>
+                <input type="month" id="input_month">
+           </p>
+           <p>
+               <label for="input_time">Время: </label>
+               <input type="time" id="input_time">
+           </p>
+           <button>Отправить</button>
+        </section>
+        <hr>
+        <section class="_12">
+            <h1>Форма заявки на работу в зоопарке</h1>
+            <i>Пожалуйста, заполните форму. Обязательные поля помечены <a style="color:red">*</a></i>
+            <form>
+                <fieldset>
+                    <legend>Контактная информация</legend>
+                    <div class="form-row">
+                        <label for="name">Имя  <a style="color:red">*</a></label>
+                        <input type="text" id="name" name="name" />
+                  </div>
+                  <div class="form-row">
+                      <label for="phone">Телефон</label>
+                      <input type="tel" id="phone" name="phone" />
+                  </div>
+                  <div class="form-row">
+                      <label for="email">Email  <a style="color:red">*</a></label>
+                      <input type="email" id="email" name="email" />
+                  </div>
+                </fieldset>
+            </form>
+            <form>
+                <fieldset>
+                    <legend>Персональная информация</legend>
+                    <div class="form-row">
+                        <label for="age">Возраст  <a style="color:red">*</a></label>
+                        <input type="text" id="age" name="age" />
+                  </div>
+                  <div class="form-row">
+                      <label for="gender">Пол</label>
+                      <select id="gender" name="gender">
+                          <option value="woman">Женщина</option>
+                          <option value="man">Мужчина</option>
+                      </select>
+                  </div>
+                  <div class="form-row">
+                      <label for="personal_qualities">Перечислите личные качества </label>
+                      <textarea id="personal_qualities" rows="10" cols="45" name="personal_qualities"></textarea>
+                  </div>
+                </fieldset>
+            </form>
+            <form>
+                <fieldset>
+                    <legend>Выберите ваших любимых животных</legend>
+                    <div class="checkbox-flex">
+                        <label>
+                            <input class="checkbox" type="checkbox" name="value" value="option1">
+                            Зебра
+                        </label>
+                        <label>
+                            <input class="checkbox" type="checkbox" name="value" value="option2">
+                            Кошак
+                        </label>
+                        <label>
+                            <input class="checkbox" type="checkbox" name="value" value="option3">
+                            Анаконда
+                        </label>
+                        <label>
+                            <input class="checkbox" type="checkbox" name="value" value="option3">
+                            Человек
+                        </label>
+                        <label>
+                            <input class="checkbox" type="checkbox" name="value" value="option3">
+                            Слон
+                        </label>
+                        <label>
+                            <input class="checkbox" type="checkbox" name="value" value="option3">
+                            Антилопа
+                        </label>
+                        <label>
+                            <input class="checkbox" type="checkbox" name="value" value="option3">
+                            Голубь
+                        </label>
+                        <label>
+                            <input class="checkbox" type="checkbox" name="value" value="option3">
+                            Краб
+                        </label>
+                    </div>
+                </fieldset>
+            </form>
+            <button class="send_info" type="button">Отправить информацию</button>
+        </section>
+
+    </main>
+</body>
+</html>
