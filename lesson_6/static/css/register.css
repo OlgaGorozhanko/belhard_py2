@@ -1,4 +1,4 @@
-.login-container {
+.register-container {
     font-family: Arial, sans-serif;
 
     display: flex;
@@ -15,21 +15,21 @@
     width: 300px;
     margin: 30px auto; /* верх/низ = 30px, авто по бокам */
     flex-direction: column;
-
 }
-.login-container h2 {
+.register-container h2 {
     margin-bottom: 20px;
     text-align: center;
     color: #333;
 }
-.login-container label {
+.register-container label {
     display: block;
     margin-bottom: 6px;
     font-weight: bold;
     color: #555;
 }
-.login-container input[type="text"],
-.login-container input[type="password"] {
+.register-container input[type="text"],
+.register-container input[type="password"],
+.register-container select {
     width: 100%;
     padding: 8px 10px;
     margin-bottom: 15px;
@@ -37,7 +37,7 @@
     border-radius: 4px;
     box-sizing: border-box;
 }
-.login-container button {
+.register-container button {
     width: 100%;
     padding: 10px;
     background-color: #200707;
@@ -46,4 +46,21 @@
     color: white;
     font-weight: bold;
     cursor: pointer;
+}
+.error-message {
+    color: #d32f2f;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    display: none;
+}
+.input-error-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.error-message {
+    color: #9e2323 !important;
+    font-size: 0.8em;
+    margin-left: 10px;
 }

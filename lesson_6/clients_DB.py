@@ -1,7 +1,9 @@
 import re
 from flask import session, redirect, url_for
 
-clients = {"test1": {"fio": "TEST1", "password": "passTEST1", "age": 8, "email": "test1@gmail.com"}}
+clients = {"test1": {"fio": "TEST1", "password": "passTEST1", "age": 8, "email": "test1@gmail.com"},
+           "Хельга": {"fio": "Хельга", "password": "passTEST1", "age": 8, "email": "test1@gmail.com"}
+           }
 
 
 def is_client(login: str, password: str) -> bool:

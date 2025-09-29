@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, request, url_for, session
 import os
 
 from req_api import get_weather, get_pic_duck2, get_pic_fox
-from clients_DB import is_client, login_check
+from clients_DB import is_client, login_check, check_valid, add_client
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'my secret key 12334 dslkfj dlskjf lsdkjf sdlkjflsdkjf'
@@ -17,7 +17,11 @@ user = {'fname': 'Helga', 'lname': 'Gorozhanko'}
 
 @app.route("/")
 def index():
-    return render_template('index.html', user=user)
+    login = None
+    # session['user_id'] = "Хельга"
+    if session.get('user_id'):
+        login = session.get('user_id')
+    return render_template('index.html', login=login)
 
 @app.route("/autorize/", methods=["GET", "POST"])
 def autorize():
@@ -30,6 +34,30 @@ def autorize():
         else:
             err = "Неверный логин/пароль"
     return render_template(render_html, err=err)
+
+
+@app.route("/register/", methods=["GET", "POST"])
+def register():
+    render_html = "register.html"
+    err = None
+    login = session.get('user_id')
+    # err = login = None
+    if request.method == "POST":
+        print(f'{request.form.get("fio")}, {request.form.get("login")}, {request.form.get("password")}, {request.form.get("email")}, {request.form.get("age")}')
+        _check_valid = check_valid(request.form.get("fio"), request.form.get("login"), request.form.get("password"), request.form.get("email"), request.form.get("age"))
+        login = session.get('user_id')
+        if _check_valid == True:
+            add_client(request.form.get("fio"), request.form.get("login"), request.form.get("password"), request.form.get("email"), request.form.get("age"))
+            return redirect(url_for("autorize", login=session.get('user_id')))
+        else:
+            err = _check_valid
+    return render_template(render_html, err=err, login=login)
+
+
+@app.route('/logout/')
+def logout():
+    session.pop('user_id', None)
+    return redirect(url_for('index'))
 
 
 @app.route("/duck/")

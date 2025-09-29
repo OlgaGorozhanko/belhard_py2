@@ -1,86 +1,10 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Регистрация</title>
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/1280px-Python.svg.png" type="image/png"/>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            display: flex;
-            height: 100vh;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-        }
-        .register-container {
-            background-color: white;
-            padding: 20px 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            width: 320px;
-        }
-        .register-container h2 {
-            margin-bottom: 20px;
-            text-align: center;
-            color: #333;
-        }
-        .register-container label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: bold;
-            color: #555;
-        }
-        .register-container input[type="text"],
-        .register-container input[type="password"],
-        .register-container select {
-            width: 100%;
-            padding: 8px 10px;
-            margin-bottom: 15px;
-            border: 1px solid #aaa;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        .register-container button {
-            width: 100%;
-            padding: 10px;
-            background-color: #1976d2;
-            border: none;
-            border-radius: 4px;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .register-container button:hover {
-            background-color: #1565c0;
-        }
-        .error-message {
-            color: #d32f2f;
-            margin-bottom: 15px;
-            font-size: 0.9em;
-            display: none;
-        }
-        .input-error-group {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 15px;
-        }
-        .error-message {
-            color: #9e2323 !important;
-            font-size: 0.8em;
-            margin-left: 10px;
-        }
-    </style>
-</head>
+{% extends "base.html" %}
+
 <body>
-        <header>
-            <button class="btn" onclick="location.href='autorize'">Войти</button>
-            <button class="btn" onclick="location.href='register'">Зарегистрироваться</button>
-        </header>
-    {% endif %}
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+
+
     <div class="register-container">
         <h2>Регистрация</h2>
         <form id="registrationForm" action="" method="POST">
@@ -126,6 +50,7 @@
             <button type="submit">Зарегистрироваться</button>
         </form>
     </div>
-</body>
-</html>
 
+
+{% endblock content %}
+</body>

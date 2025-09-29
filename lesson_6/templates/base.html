@@ -15,12 +15,19 @@
         </ul>
     </nav>
     <header>
+        {% if login %}
         <!-- словарь в шаблонах можно как обычно, а так же через . как свойство объекта  -->
-        <h1 class="text"><span>Добро пожаловать, Хельга!</span></h1>
+            <h1 class="text"><span>Добро пожаловать, {{ login }}!</span></h1>
+            <div class="log">
+                <button class="glow-on-hover" onclick="location.href='/logout'">Выйти</button>
+            </div>
+        {% else %}
+            <h1 class="text"><span>Добро пожаловать, Гость!</span></h1>
         <div class="log">
-            <button class="glow-on-hover" type="button">Войти</button>
-            <button class="glow-on-hover" type="button">Зарегистрироваться</button>
+            <button class="glow-on-hover" type="button" onclick="location.href='/autorize'">Войти</button>
+            <button class="glow-on-hover" type="button" onclick="location.href='/register'">Зарегистрироваться</button>
         </div>
+        {% endif %}
     </header>
 
     <main>
@@ -37,7 +44,6 @@
     </main>
     
     <footer><h3>Было приятно познакомиться, пока :)</h3></footer>
-    
 
     
 </body>

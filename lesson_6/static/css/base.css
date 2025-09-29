@@ -77,8 +77,18 @@ header span {
         0 15px 10px rgba(0,0,0,.2),
         0 25px 15px rgba(0,0,0,.15);
 }
+header .log{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
 
-header.log {
+}
+
+.glow-on-hover {
+    margin: 5px;
     width: 220px;
     height: 50px;
     border: none;
@@ -89,8 +99,9 @@ header.log {
     position: relative;
     z-index: 0;
     border-radius: 10px;
+    font-family: "Arial", sans-serif;
+    font-size: 15px;
 }
-
 .glow-on-hover:before {
     content: '';
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
@@ -118,4 +129,21 @@ header.log {
 
 .glow-on-hover:hover:before {
     opacity: 1;
+}
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #200707;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
 }
