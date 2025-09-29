@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 6</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+</head>
+<body class="container">
+ <nav>
+        <ul class="menu">
+            {% block menu %}
+            {% include 'menu.html' %}
+            {% endblock %}
+        </ul>
+    </nav>
+    <header>
+        <!-- словарь в шаблонах можно как обычно, а так же через . как свойство объекта  -->
+        <h1 class="text"><span>Добро пожаловать, Хельга!</span></h1>
+        <div class="log">
+            <button class="glow-on-hover" type="button">Войти</button>
+            <button class="glow-on-hover" type="button">Зарегистрироваться</button>
+        </div>
+    </header>
+
+    <main>
+            {% block content%}{% endblock content %}
+<!--        <section class="info">-->
+<!--            <p class="base-info">Section</p>-->
+
+<!--        </section>-->
+<!--        -->
+<!--        -->
+<!--        <section class="content">   -->
+<!--            <p class="base-info">Section</p>-->
+<!--    </section>-->
+    </main>
+    
+    <footer><h3>Было приятно познакомиться, пока :)</h3></footer>
+    
+
+    
+</body>
+
+
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Погода</title>
+  <style>
+    /* Вставьте сюда CSS из предыдущего ответа */
+    /* Основные стили и сброс */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6dd5fa 0%, #2980b9 100%);
+      color: #fff;
+      min-height: 100vh;
+      padding-top: 80px; /* отступ сверху под шапку */
+      margin: 0;
+    }
+
+    /* Контейнер основной */
+    .weather-container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.37);
+      max-width: 450px;
+      width: 100%;
+      padding: 30px 40px;
+      text-align: center;
+    }
+
+    /* Заголовок */
+    .weather-container h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    }
+
+    /* Текущая температура и иконка */
+    .current-weather {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .current-temp {
+      font-size: 5rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+      letter-spacing: -2px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .weather-icon {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 10px;
+      font-size: 96px; /* для эмодзи */
+      line-height: 1;
+    }
+
+    /* Описание погоды */
+    .weather-description {
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-transform: capitalize;
+      margin-bottom: 5px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+    }
+
+    /* Дополнительная инфа (влажность, ветер и т.п.) */
+    .weather-details {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+      font-size: 1rem;
+    }
+
+    .weather-details div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .weather-details span {
+      font-weight: 700;
+      margin-top: 5px;
+    }
+
+    /* Прогноз на несколько дней */
+    .forecast {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+
+    .forecast-day {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
+      padding: 15px;
+      width: 60px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background 0.3s ease;
+      cursor: default;
+      user-select: none;
+      margin-right: 10px;
+    }
+
+    .forecast-day:last-child {
+      margin-right: 0;
+    }
+
+    .forecast-day:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .forecast-day .day-name {
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    .forecast-day .icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 8px;
+      font-size: 36px;
+      line-height: 1;
+    }
+
+    .forecast-day .temp {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+           /* шапка */
+        .top-header {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 999;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          padding: 10px 40px;
+          background: rgba(255,255,255,0.2);
+          backdrop-filter: blur(10px);
+        }
+        .btn {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+          }
+        .btn:hover {
+            background-color: #FFA500; /* Цвет подсветки */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Тень для эффекта подсветки */
+        }
+        .hello{
+             color: #0C268E;
+             text-align: right;
+             margin-right: 10px;
+             padding: 10px 20px;
+        }
+  </style>
+</head>
+<body>
+  <header class="top-header">
+    {% if login %}
+      <label class="hello"><H1>Добро пожаловать на наш сайт, {{login}}</H1></label>
+      <button class="btn" onclick="location.href='/logout'">Выйти</button>
+    {% else %}
+      <button class="btn" onclick="location.href='autorize'">Войти</button>
+      <button class="btn" onclick="location.href='register'">Зарегистрироваться</button>
+    {% endif %}
+  </header>
+  <div class="weather-container">
+    <h1>Погода сегодня в городе {{city}}</h1>
+
+    <div class="current-weather">
+<!--      <div class="weather-icon">☀️/ ☁️</div>-->
+      <div class="current-temp">{{weather["temp"]}}°K</div>
+      <div class="weather-description">{{weather["main"]}}</div>
+    </div>
+
+    <div class="weather-details">
+      <div>
+        <div>💧</div>
+        <span>Влажность:</span>
+        <span>{{weather["humidity"]}}%</span>
+      </div>
+      <div>
+        <div>🌬️</div>
+        <span>Ветер:</span>
+        <span>{{weather["wind"]}} км/ч</span>
+      </div>
+      <div>
+        <div>⚖️</div>
+        <span>Давление:</span>
+        <span>{{weather["pressure"]}} гПа</span>
+      </div>
+    </div>
+
+    </div>
+  </div>
+<a href="/">На главную</a>
+</body>
+</html>
