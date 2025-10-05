@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8" />
-<title>Диагональная радуга с единорогом</title>
-<style>
-  body, html {
+body, html {
     margin: 0;
     height: 100%;
     background: #fff;
@@ -104,31 +98,3 @@
             background-color: #FFA500; /* Цвет подсветки */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Тень для эффекта подсветки */
         }
-</style>
-</head>
-<body>
- {% if login %}
-        <label class="hello"><H1> Добро пожаловать на наш сайт, {{login}}</H1></label>
-        <header><button class="btn" onclick="location.href='/logout'">Выйти</button></header>
-    {% else %}
-        <header>
-            <button class="btn" onclick="location.href='autorize'">Войти</button>
-            <button class="btn" onclick="location.href='register'">Зарегистрироваться</button>
-        </header>
-    {% endif %}
-<!-- Контейнер с диагональными полосами -->
-<div class="rainbow-container">
-  <div class="stripe red"></div>
-  <div class="stripe orange"></div>
-  <div class="stripe yellow"></div>
-  <div class="stripe green"></div>
-  <div class="stripe blue"></div>
-  <div class="stripe indigo"></div>
-  <div class="stripe violet"></div>
-</div>
-<a href="/" class="rainbow-link">На главную страницу</a>
-<!-- Добавляем картинку единорога (замените ссылку на любое изображение) -->
-<img class="unicorn" src="https://i.ytimg.com/vi/UOXHY7t3eOE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLD7ZvDmUMU4cwymk2x3LptbcNlhSA" alt="Радужный единорог" />
-
-</body>
-</html>

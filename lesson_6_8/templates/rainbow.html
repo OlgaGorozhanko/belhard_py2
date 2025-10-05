@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+
+<body>
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='rainbow.css') }}">
+
+<!-- Контейнер с диагональными полосами -->
+<div class="rainbow-container">
+  <div class="stripe red"></div>
+  <div class="stripe orange"></div>
+  <div class="stripe yellow"></div>
+  <div class="stripe green"></div>
+  <div class="stripe blue"></div>
+  <div class="stripe indigo"></div>
+  <div class="stripe violet"></div>
+</div>
+<!-- Добавляем картинку единорога (замените ссылку на любое изображение) -->
+<img class="unicorn" src="https://i.ytimg.com/vi/UOXHY7t3eOE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLD7ZvDmUMU4cwymk2x3LptbcNlhSA" alt="Радужный единорог" />
+{% endblock content %}
+</body>

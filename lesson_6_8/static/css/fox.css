@@ -1,0 +1,36 @@
+.text{
+            margin-top: 5px;
+        }
+
+          /* шапка */
+        .top-header {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 999;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          padding: 10px 40px;
+          background: rgba(255,255,255,0.2);
+          backdrop-filter: blur(10px);
+        }
+        .btn {
+            padding: 10px 20px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+          }
+        .btn:hover {
+            background-color: #FFA500; /* Цвет подсветки */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Тень для эффекта подсветки */
+        }
+        .hello{
+             color: #0C268E;
+             text-align: right;
+             margin-right: 10px;
+             padding: 10px 20px;
+        }

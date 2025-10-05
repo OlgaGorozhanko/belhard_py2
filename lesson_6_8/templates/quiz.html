@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+<body>
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
+    <div class="start_form quiz_form">
+    <form action="/quiz/" method="post">
+        <div class="form1">
+            <h2>Выберите КВИЗ</h2>
+            <select name="quiz" >
+                {% for q in quizes %}
+                    <option value="{{ q.id }}"> {{ q.name }}</option>
+                {% endfor%}
+            </select>
+            <div>
+                <input class="button" type="submit" value ='Начать КВИЗ'>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+{% endblock content %}
+</body>

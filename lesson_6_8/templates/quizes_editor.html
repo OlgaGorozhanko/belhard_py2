@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+<body>
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='quiz.css') }}">
+    <div class="quizes quiz_form">
+        <div class="quiz-row quiz-hrow">
+            <div class="quiz-col">№</div>
+            <div class="quiz-col">Название</div>
+            <div class="quiz-col">Сколько вопросов</div>
+        </div>
+        {% for q in quizes %}
+        <a href="/quiz_edit/{{q.id}}">
+            <div class="quiz-row">
+                <div class="quiz-col">{{ loop.index+1 }}</div>
+                <div class="quiz-col">{{ q.name }}</div>
+                <div class="quiz-col">{{ len(q.question) }}</div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+
+<div class="questions quiz_form">
+    {% include 'form_questions_tab.html' %}
+</div>
+{% include 'modal_question_add.html' %}
+{% endblock %}
+
+</body>

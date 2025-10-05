@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>МЕНЮ</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='menu.css') }}">
 </head>
 <body>
-    <h1>{% block header %}{% endblock header %}</h1>
     <ul class="bmenu">
         <li><a href="/fox/">Уточки Кря кря</a></li>
         <li><a href="/fox/">Лисички-сестрички</a></li>
@@ -14,8 +13,12 @@
         <li><a href="/weather/">Погода</a></li>
         <li><a href="/rainbow/">Радуга-дуга</a></li>
         <li><a href="/tags/">Задание 5</a></li>
+        <li>
+        <a href="/quiz/">Квиз</a>
+        <ul class="submenu">
+            <li><a href="/quiz/editor/">Редактор</a></li>
+        </ul>
+        </li>
     </ul>
-
-    <div>{% block content%}{% endblock content %}</div>
 </body>
 </html>

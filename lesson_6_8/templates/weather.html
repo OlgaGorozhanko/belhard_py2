@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+<body>
+{% block content %}
+{% block extra_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='weather.css') }}">
+{% endblock %}
+  <div class="weather-container">
+    <h1>Погода сегодня в городе {{city}}</h1>
+
+    <div class="current-weather">
+<!--      <div class="weather-icon">☀️/ ☁️</div>-->
+      <div class="current-temp">{{weather["temp"]}}°K</div>
+      <div class="weather-description">{{weather["main"]}}</div>
+    </div>
+
+    <div class="weather-details">
+      <div>
+        <div>💧</div>
+        <span>Влажность:</span>
+        <span>{{weather["humidity"]}}%</span>
+      </div>
+      <div>
+        <div>🌬️</div>
+        <span>Ветер:</span>
+        <span>{{weather["wind"]}} км/ч</span>
+      </div>
+      <div>
+        <div>⚖️</div>
+        <span>Давление:</span>
+        <span>{{weather["pressure"]}} гПа</span>
+      </div>
+    </div>
+
+    </div>
+  </div>
+{% endblock content %}
+</body>

@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Погода</title>
-  <style>
-    /* Вставьте сюда CSS из предыдущего ответа */
-    /* Основные стили и сброс */
-    * {
+* {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -173,47 +164,3 @@
              margin-right: 10px;
              padding: 10px 20px;
         }
-  </style>
-</head>
-<body>
-  <header class="top-header">
-    {% if login %}
-      <label class="hello"><H1>Добро пожаловать на наш сайт, {{login}}</H1></label>
-      <button class="btn" onclick="location.href='/logout'">Выйти</button>
-    {% else %}
-      <button class="btn" onclick="location.href='autorize'">Войти</button>
-      <button class="btn" onclick="location.href='register'">Зарегистрироваться</button>
-    {% endif %}
-  </header>
-  <div class="weather-container">
-    <h1>Погода сегодня в городе {{city}}</h1>
-
-    <div class="current-weather">
-<!--      <div class="weather-icon">☀️/ ☁️</div>-->
-      <div class="current-temp">{{weather["temp"]}}°K</div>
-      <div class="weather-description">{{weather["main"]}}</div>
-    </div>
-
-    <div class="weather-details">
-      <div>
-        <div>💧</div>
-        <span>Влажность:</span>
-        <span>{{weather["humidity"]}}%</span>
-      </div>
-      <div>
-        <div>🌬️</div>
-        <span>Ветер:</span>
-        <span>{{weather["wind"]}} км/ч</span>
-      </div>
-      <div>
-        <div>⚖️</div>
-        <span>Давление:</span>
-        <span>{{weather["pressure"]}} гПа</span>
-      </div>
-    </div>
-
-    </div>
-  </div>
-<a href="/">На главную</a>
-</body>
-</html>

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+<body>
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/autorize_1.css') }}">
+    <label class="text"><h1>Больше лисичек Богу лисичек</h1></label>
+    <label class="text"><h2>но максимум 10 подношений (минимум 1)</h2></label>
+    <p></p>
+    {% if foxes |length > 0 and foxes |length < 11 %}
+        {% for fox in foxes %}
+            <img src="{{ fox }}">
+        {% endfor %}
+     {% else %}
+        <p>{{ mess }}</p>
+    {% endif %}
+{% endblock content %}
+</body>
