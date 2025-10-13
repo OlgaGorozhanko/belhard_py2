@@ -21,7 +21,7 @@ class UserId(BaseModel):
 # Question ----------------
 
 class QuestionAdd(BaseModel):
-    quesion: str
+    question: str
     answer: str
     wrong1: str
     wrong2: str
@@ -41,9 +41,9 @@ class QuestionId(BaseModel):
 
 class QuizeAdd(BaseModel):
     name_quize: str
-    id_quesion1: int
-    id_quesion2: int
-    id_quesion3: int
+    id_question1: int
+    id_question2: int
+    id_question3: int
 
 
 class Quize(QuizeAdd):

@@ -47,13 +47,13 @@ class DataRepository:
     async def add_question_data(cls):
         async with new_session() as session:
             questions = [
-                QuestionOrm(quesion='Сколько будет 2+2*2?', answer='6', wrong1='4', wrong2='8', wrong3='10'),
-                QuestionOrm(quesion='Сколько месяцев в году имеют 28 дней?', answer='Все', wrong1='Один', wrong2='Ни одного', wrong3='Два'),
-                QuestionOrm(quesion='Каким станет зелёный утёс, если упадет в Красное море?', answer='Мокрым', wrong1='Красным', wrong2='Не изменится', wrong3='Фиолетовым'),
-                QuestionOrm(quesion='Какой рукой лучше размешивать чай?', answer='Ложкой', wrong1='Правой', wrong2='Левой', wrong3='Любой'),
-                QuestionOrm(quesion='Что не имеет длины, глубины, ширины, высоты, а можно измерить?', answer='Время', wrong1='Глупость', wrong2='Море', wrong3='Воздух'),
-                QuestionOrm(quesion='Когда сетью можно вытянуть воду?', answer='Когда вода замерзла', wrong1='Воздушный шар', wrong2='Парашют', wrong3='Облако'),
-                QuestionOrm(quesion='Что такое у меня в кармашке?', answer='Кольцо', wrong1='Кулак', wrong2='Дырка', wrong3='Бублик')
+                QuestionOrm(question='Сколько будет 2+2*2?', answer='6', wrong1='4', wrong2='8', wrong3='10'),
+                QuestionOrm(question='Сколько месяцев в году имеют 28 дней?', answer='Все', wrong1='Один', wrong2='Ни одного', wrong3='Два'),
+                QuestionOrm(question='Каким станет зелёный утёс, если упадет в Красное море?', answer='Мокрым', wrong1='Красным', wrong2='Не изменится', wrong3='Фиолетовым'),
+                QuestionOrm(question='Какой рукой лучше размешивать чай?', answer='Ложкой', wrong1='Правой', wrong2='Левой', wrong3='Любой'),
+                QuestionOrm(question='Что не имеет длины, глубины, ширины, высоты, а можно измерить?', answer='Время', wrong1='Глупость', wrong2='Море', wrong3='Воздух'),
+                QuestionOrm(question='Когда сетью можно вытянуть воду?', answer='Когда вода замерзла', wrong1='Воздушный шар', wrong2='Парашют', wrong3='Облако'),
+                QuestionOrm(question='Что такое у меня в кармашке?', answer='Кольцо', wrong1='Кулак', wrong2='Дырка', wrong3='Бублик')
             ]
 
             session.add_all(questions)
@@ -65,11 +65,11 @@ class DataRepository:
     async def add_quize_data(cls):
         async with new_session() as session:
             quizes = [
-                QuizeOrm(name_quize='КВИЗ1', id_quesion1=5, id_quesion2=4, id_quesion3=8)
-                , QuizeOrm(name_quize='КВИ2', id_quesion1=7, id_quesion2=3, id_quesion3=5)
-                , QuizeOrm(name_quize='КВИЗ3', id_quesion1=4, id_quesion2=5, id_quesion3=2)
-                , QuizeOrm(name_quize='КВИЗ4', id_quesion1=6, id_quesion2=3, id_quesion3=1)
-                , QuizeOrm(name_quize='КВИЗ5', id_quesion1=7, id_quesion2=2, id_quesion3=5)
+                QuizeOrm(name_quize='КВИЗ1', id_question1=5, id_question2=4, id_question3=8)
+                , QuizeOrm(name_quize='КВИ2', id_question1=7, id_question2=3, id_question3=5)
+                , QuizeOrm(name_quize='КВИЗ3', id_question1=4, id_question2=5, id_question3=2)
+                , QuizeOrm(name_quize='КВИЗ4', id_question1=6, id_question2=3, id_question3=1)
+                , QuizeOrm(name_quize='КВИЗ5', id_question1=7, id_question2=2, id_question3=5)
             ]
 
             session.add_all(quizes)
@@ -164,53 +164,11 @@ class QuizesRepository:
             quize = res.scalars().first()
             return quize
 
-    # @classmethod
-    # async def get_quiz_questions(cls, id) -> QuizeOrm:
-    #     async with new_session() as session:
-    #         query = select(QuizeOrm).where(QuizeOrm.id == id)
-    #         res = await session.execute(query)
-    #         quize = res.scalars().first()
-    #         return quize
-
-
-
-# CRUD
-# С
-#     user = User(**user_data)
-#     session.add(user)
-#     # для bulk(множественных) операций
-#     stmt = insert(User).values(**user_data).returning(User.id)
-
-# R
-#     stmt = select(User)
-#     stmt = select(User).where(User.id == user_id)
-#     stmt = select(User).where(
-#             User.is_active == True,
-#             User.created_at >= datetime.now() - timedelta(days=30)
-#         )
-#     stmt = select(User).order_by(User.created_at.desc())
-#     stmt = select(User).offset((page-1)*size).limit(size)
-#     stmt = select(User.name)
-#     stmt = select(User, Post).join(Post, User.id == Post.user_id)
-#     stmt = select(func.count(User.id))
-#     stmt = select(func.avg(User.age))
-
-
-#     # фильтрация
-#     # filter - старый стиль
-#     users = session.query(User).filter(User.name == 'John').filter(User.age > 25).all()
-#     # where - новый стиль - предпочтительней
-#     stmt = select(User).where(User.name == 'John', User.age > 25)
-
-# U
-#     stmt = update(User).where(User.id == user_id).values(**update_data)
-# D
-#     stmt = delete(User).where(User.id == user_id)
-
-
-# .scalars().all() - список объектов
-# .scalar_one_or_none() - один объект или None
-# .scalar() - одно значение
-# .first() - первая запись
-# .one() - ровно одна запись (иначе исключение)
-# .all() - все записи как кортежи
+    @classmethod
+    async def get_quiz_questions(cls, id) -> (int, ):
+        async with new_session() as session:
+            query = select(QuizeOrm).where(QuizeOrm.id == id)
+            print(query)
+            res = await session.execute(query)
+            quize = res.scalars().first()
+            return (quize.id_question1, quize.question1.question)

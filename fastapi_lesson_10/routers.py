@@ -67,12 +67,14 @@ async def quize_get(id: int) -> Quize:
     raise HTTPException(status_code=404, detail="Quize not found")
 
 
-# @quizes_router.get('/{id}/questions1')
-# async def quiz_questions_get(id: int) -> Quize:
-#     quize = await qr.get_quiz_questions(id)
-#     if quize:
-#         return quize
-#     raise HTTPException(status_code=404, detail="Quize not found")
+@quizes_router.get('/{id}/questions')
+async def quiz_questions_get(id: int) -> Quize:
+    quize = await qr.get_quiz_questions(id)
+    print(quize)
+    print()
+    if quize:
+        return {'status': 'ok', 'data': quize[1]}
+    raise HTTPException(status_code=404, detail="Quize not found")
 
 
 # ---------------------------------------Questions
