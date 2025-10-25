@@ -1,0 +1,33 @@
+ {% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>МЕНЮ</title>
+    <link rel="stylesheet" href="{% static 'main/menu.css' %}">
+</head>
+<body>
+    <ul class="bmenu">
+        <li><a href="/courses/">Курсы</a>
+            {% if admin %}
+                <ul class="submenu">
+                    <li><a href="/editor/course/">Редактор</a></li>
+                </ul>
+            {% endif %}
+        </li>
+        <li><a href="/teacher/">Преподаватели</a>
+             {% if admin %}
+                <ul class="submenu">
+                    <li><a href="/editor/teacher/">Редактор</a></li>
+                </ul>
+            {% endif %}
+        </li>
+        <li><a href="/students/">Студенты</a>
+             {% if admin %}
+                <ul class="submenu">
+                    <li><a href="/editor/students">Редактор</a></li>
+                </ul>
+            {% endif %}
+        </li>
+    </ul>
+</body>
+</html>

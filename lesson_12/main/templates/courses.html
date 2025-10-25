@@ -1,0 +1,22 @@
+{% extends "index_1.html" %}
+{% load static %}
+
+<body>
+{% block content %}
+
+<!-- Добавляем картинку единорога (замените ссылку на любое изображение) -->
+
+
+    <conteiner>
+        <h1>Курсы в наличии</h1>
+        <h1> {{ courses }}</h1>
+        {% for course in courses %}
+        <h2>Название курса: {{ course.name }}</h2>
+        <h2>Дата начала курса: {{ course.start_date }}</h2>
+        <h2>Дата окончания курса: {{ course.start_date }}</h2>
+        <h2>Описание курса: {{ course.description }}</h2>
+        {% endfor %}
+    </conteiner>
+
+{% endblock content %}
+</body>
