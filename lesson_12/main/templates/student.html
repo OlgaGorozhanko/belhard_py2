@@ -1,0 +1,27 @@
+{% extends "index_1.html" %}
+{% load static %}
+
+<body>
+{% block content %}
+
+<!-- Добавляем картинку единорога (замените ссылку на любое изображение) -->
+    <div container>
+        <div class="head">Зачисленные студенты</div>
+        <div class="info-st">
+            <div class="photo">
+                <img class="st-photo" src="{{student.photo.url}}" alt='Нет ФОТО'>
+            </div>
+            <div class="info">
+                <p> Фамилия: {{ student.surname }}</p>
+                <p> Имя: {{ student.name }}</p>
+                <p> Курсы:
+                    {% for c in student.course.all %}
+                        {{c}}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+        <h1> {{ students }}</h1>
+    </div>
+{% endblock content %}
+</body>

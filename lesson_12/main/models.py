@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxLengthValidator, MinValueValidator, MaxValueValidator
+from django.urls import reverse
 
 # Create your models here.
 
@@ -38,15 +39,34 @@ class Student(models.Model):
         , verbose_name="Посещаемые курсы"
     )
 
-    #photo
+    # для получения уникальной ссылки
+    # slug = models.SlugField(
+    #     max_length=255,
+    #     unique=True,
+    #     db_index=True,
+    #     verbose_name="URL",
+    #     help_text="только латинские")
+
+    photo = models.ImageField(
+        upload_to=r'phontos/%Y/%m/%d',
+        blank=True,
+        verbose_name="Фото"
+    )
 
     def __str__(self):
         return f"{self.name} {self.surname} {self.age} {self.sex} {'+' if self.active else '-'}"
 
+    def get_absolute_url(self):
+        return reverse('student2', kwargs={"name_slug": self.slug})
+
+    def get_edit_url(self):
+        return reverse('student_edit', kwargs={"id": self.pk})
+
+
     class Meta:  # ??
         verbose_name = "Студент"
         verbose_name_plural = "Студенты"
-        # indexes = [admin.Index(fields=['surname'])]
+        indexes = [models.Index(fields=['surname'])]
         ordering = ["surname"]
 
 
