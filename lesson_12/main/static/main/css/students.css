@@ -54,3 +54,7 @@ border-radius: 0 0 10px 0;
 tr td:last-child {
 border-right: none;
 }
+.img-student {
+    max-width: 150px; /* Максимальная ширина */
+    height: auto;     /* Автоматическая высота для сохранения пропорций */
+}

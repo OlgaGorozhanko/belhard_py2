@@ -21,35 +21,21 @@ def index2(request):
 #     return render(request, 'students.html', {'students': students})
 
 def students(request):
-    # взять всех студентов но при это связи на загрузятся
-    # они будут грузиться автоматом при запросе для каждого студента отдельно
-    # сколько студентов столько запросов
-    # students = Student.objects.all()
-
-    # загрузить сразу отдельным запросом курсы из каждого студента
-    # 2 запроса при любом количестве данных
-    # students = Student.objects.prefetch_related('course').all()
-
-    # или к примеру отдельным запросом по цепочке (двойное подчеркивание)
-    # студенты -> у студентов оценки -> у оценок ее курс
-    # 3 запроса при любом количестве данных
     students = Student.objects.prefetch_related('grades__course').all()
-    # еще более сложная цепочка
-    # students = Student.objects.prefetch_related('grades__course__student_set').all()
-
+    print('-----------------------')
     for s in students:
         c = [f'{g.grade} - {g.course}' for g in s.grades.all()]
-        # print(type(c))
         print(s.name, ' - ', c or 'нет оценок')
-
-    print('-----------------------')
-    print(f"Запросов: {len(connection.queries)}")
     for query in connection.queries:
         print(query['sql'])
+    print('-----------------------')
 
     return render(request, 'students.html',
                   context={'students': students})
 
+def student(r, id):
+    student = Student.objects.get(id=id)
+    return render(r, 'student.html', context={'student': student})
 
 
 def course(request):

@@ -39,7 +39,7 @@ class Student(models.Model):
     )
 
     photo = models.ImageField(
-        upload_to=r'phontos/%Y/%m/%d',
+        upload_to=r'phontos/%Y/%m/%d/',
         blank=True,
         verbose_name="Фото"
     )

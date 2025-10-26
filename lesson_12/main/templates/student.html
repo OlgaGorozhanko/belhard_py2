@@ -1,0 +1,35 @@
+{% extends "index_1.html" %}
+{% load static %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/css/student.css' %}">
+<div class="student-info">
+    <table class="student-table">
+        <tbody>
+           <tr>
+            <td class="photo">
+
+                {% if student.photo %}
+                    <img class="st-photo" src="{{ student.photo.url }}" alt='Нет ФОТО'>
+                {% else %}
+                    <img class="st-photo" src="{% static 'main/pic/no-photo.png' %}" alt='Нет ФОТО'>
+                {% endif %}
+            </td>
+            <td class="info">
+                    <p>Фамилия:       {{student.surname}}</p>
+                        <p> Имя:   {{ student.name }}</p>
+                        <p> Возраст: {{ student.age }}</p>
+                        <p> Пол: {{ student.get_sex_display }}</p>
+                        <p> Курсы:
+                            {% for c in student.course.all %}
+                                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{c}}{% if not forloop.last %},{% endif %}
+                            {% endfor %}
+                        </p>
+        </td>
+</tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
