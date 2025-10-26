@@ -4,7 +4,7 @@ from . import models
 # Register your models here.
 from .models import Student, Course, Grade
 
-admin.site.register(Student)  #строки 8-10 равносильны этой + прописывают отображение
+ #строки 8-10 равносильны этой + прописывают отображение
 
 #@admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
@@ -15,7 +15,7 @@ class StudentAdmin(admin.ModelAdmin):
     list_filter = ('sex', 'active')
 
     # для формирования slug
-    prepopulated_fields = {"slug": ("name", "surname")}
+   # prepopulated_fields = {"slug": ("name", "surname")}
 
     def short_name(self, obj):
         return f"{obj.surname} {obj.name[0]}."
@@ -34,6 +34,8 @@ class StudentAdmin(admin.ModelAdmin):
     short_name.short_description = "Короткое имя"
     average_grade2.short_description = "Средний бал"
     average_grade.short_description = "Средний бал"
+
+admin.site.register(Student, StudentAdmin)
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
