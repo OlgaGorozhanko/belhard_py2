@@ -6,23 +6,28 @@
 <link rel="stylesheet" href="{% static 'main/students.css' %}">
 <div class="container-stud">
     <h1>Зачисленные студенты</h1>
+        <table class="students">
+        <thead>
+            <tr>
 
-        <div class="students-cell"> № </div>
-        <div class="students-cell"> ФИО</div>
-        <div class="students-cell"> Пол  </div>
-        <div class="students-cell"> ФОТО  </div>
+                <th>ФИО</th>
+                <th>Пол</th>
+                <th>ФОТО</th>
+            </tr>
+        </thead>
+        <tbody>
         {% for s in students %}
-            <div class="students-cell"> <a href="{{ s.get_absolute_url }}">{{s.name}} {{s.surname}}</a></div>
-            <div class="students-cell"> {{s.sex}} {{s.get_sex_display}} </div>
-            <div class="students-cell">
-                {% if s.photo %}
-                    <img class="img-student thumb" src="{{ s.photo.url }}" alt="Нету">
-                {% else %}
-                    <!-- <img class="img-student thumb" src="{% static 'main/pic/no-photo.png' %}" alt="Нету"> -->
-                {% endif %}
-            </div>
+            <tr>
+                <td>{{s.name}} {{s.surname}}</td>
+                <td>{{s.get_sex_display}} </td>
+                <td>{% if s.photo %}
+                        <img class="img-student thumb" src="{{ s.photo.url }}" alt="Нету">
+                   {% endif %}
+                </td>
+            </tr>
         {% endfor %}
-
+        </tbody>
+        </table>
 </div>
 {% endblock content %}
 </body>
