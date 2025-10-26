@@ -38,7 +38,11 @@ class Student(models.Model):
         , verbose_name="Посещаемые курсы"
     )
 
-    #photo
+    photo = models.ImageField(
+        upload_to=r'phontos/%Y/%m/%d',
+        blank=True,
+        verbose_name="Фото"
+    )
 
     def __str__(self):
         return f"{self.name} {self.surname} {self.age} {self.sex} {'+' if self.active else '-'}"

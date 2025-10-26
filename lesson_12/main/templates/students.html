@@ -3,11 +3,26 @@
 
 <body>
 {% block content %}
-
-<!-- Добавляем картинку единорога (замените ссылку на любое изображение) -->
-
+<link rel="stylesheet" href="{% static 'main/students.css' %}">
+<div class="container-stud">
     <h1>Зачисленные студенты</h1>
 
-<h1> {{ students }}</h1>
+        <div class="students-cell"> № </div>
+        <div class="students-cell"> ФИО</div>
+        <div class="students-cell"> Пол  </div>
+        <div class="students-cell"> ФОТО  </div>
+        {% for s in students %}
+            <div class="students-cell"> <a href="{{ s.get_absolute_url }}">{{s.name}} {{s.surname}}</a></div>
+            <div class="students-cell"> {{s.sex}} {{s.get_sex_display}} </div>
+            <div class="students-cell">
+                {% if s.photo %}
+                    <img class="img-student thumb" src="{{ s.photo.url }}" alt="Нету">
+                {% else %}
+                    <!-- <img class="img-student thumb" src="{% static 'main/pic/no-photo.png' %}" alt="Нету"> -->
+                {% endif %}
+            </div>
+        {% endfor %}
+
+</div>
 {% endblock content %}
 </body>

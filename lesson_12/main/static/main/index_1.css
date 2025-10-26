@@ -31,13 +31,7 @@ nav {
 header {
   grid-area: header;
 }
-main {
-    justify-content: center; /* центрирует по горизонтали */
-    grid-area: main;
-    background-color: #b1aeae;
-    border-radius: 10px;
-    box-shadow: -10px -5px 5px 1px rgb(189 153 153 / 40%);
-}
+
 footer {
     text-align: left;
     grid-area: footer;
