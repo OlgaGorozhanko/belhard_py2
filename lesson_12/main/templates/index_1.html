@@ -1,0 +1,44 @@
+ {% load static %}
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задание 12</title>
+    <link rel="stylesheet" href="{% static 'main/css/index_1.css' %}">
+</head>
+<body class="container">
+ <nav>
+        <ul class="menu">
+            {% block menu %}
+            {% include 'menu.html' %}
+            {% endblock %}
+        </ul>
+    </nav>
+    <header>
+        {% if login %}
+        <!-- словарь в шаблонах можно как обычно, а так же через . как свойство объекта  -->
+            <h1 class="text"><span>Добро пожаловать, {{ login }}!</span></h1>
+            <div class="log">
+                <button class="glow-on-hover" onclick="location.href='/logout'">Выйти</button>
+            </div>
+        {% else %}
+            <h1 class="text"><span>Добро пожаловать, Гость!</span></h1>
+        <div class="log">
+            <button class="glow-on-hover" type="button" onclick="location.href='/autorize'">Войти</button>
+            <button class="glow-on-hover" type="button" onclick="location.href='/register'">Зарегистрироваться</button>
+        </div>
+        {% endif %}
+    </header>
+
+    <main>
+            {% block content%}{% endblock content %}
+    </main>
+
+    <footer><h3>@ by Gorozhanko Olga</h3></footer>
+
+
+</body>
+
+
+</html>

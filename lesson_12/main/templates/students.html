@@ -1,0 +1,34 @@
+{% extends "index_1.html" %}
+{% load static %}
+
+<body>
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/css/students.css' %}">
+<div class="container-stud">
+    <h1>Зачисленные студенты</h1>
+        <table class="students">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>ФИО</th>
+                <th>Пол</th>
+                <th>ФОТО</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for s in students %}
+            <tr>
+                <td><a href="{% url 'student' s.id %}">{{ forloop.counter}}</a></td>
+                <td>{{s.name}} {{s.surname}}</td>
+                <td>{{s.get_sex_display}} </td>
+                <td>{% if s.photo %}
+                        <img class="img-student" src="{{ s.photo.url }}" alt="Нет">
+                   {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+</div>
+{% endblock content %}
+</body>

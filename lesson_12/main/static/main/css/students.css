@@ -1,0 +1,60 @@
+.container-stud{
+
+    display: grid;
+    text-align: center;
+    justify-content: center;
+}
+.students{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 35px;
+    border-radius: 10px;
+    border-spacing: 0;
+    text-align: center;
+}
+.container-stud h1{
+    font-size: 65px;
+    color: white;
+    text-shadow: 12px 12px 0 #3d0303;
+    margin:10px;
+
+}
+
+th {
+background: #3d1010;
+color: white;
+text-shadow: 0 5px 5px #2D2020;
+padding: 10px 20px;
+}
+th, td {
+border-style: solid;
+    border-width: 0 2px 2px 0;
+border-color: white;
+}
+th:first-child, td:first-child {
+text-align: left;
+}
+th:first-child {
+border-top-left-radius: 10px;
+}
+th:last-child {
+border-top-right-radius: 10px;
+border-right: none;
+}
+td {
+padding: 10px 20px;
+background: #472424;
+color: #a9a9a9;
+}
+tr:last-child td:first-child {
+border-radius: 0 0 0 10px;
+}
+tr:last-child td:last-child {
+border-radius: 0 0 10px 0;
+}
+tr td:last-child {
+border-right: none;
+}
+.img-student {
+    max-width: 150px; /* Максимальная ширина */
+    height: auto;     /* Автоматическая высота для сохранения пропорций */
+}
